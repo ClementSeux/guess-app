@@ -188,7 +188,7 @@ form {
         padding: 0 5px;
 
         color: var(--quaternaryColor);
-        background-color: var(--secondaryColor);
+        background-color: var(--tertiaryColor);
         font-size: 0.8em;
         border-radius: 5px;
     }
@@ -204,12 +204,12 @@ form {
     & input {
         font-size: 1.2em;
         color: transparent;
+        background-color: var(--tertiaryColor);
 
         width: 200px;
         padding: 15px;
         border: none;
         border-radius: 5px;
-        background-color: var(--secondaryColor);
         &:focus {
             outline: none;
             color: transparent;
