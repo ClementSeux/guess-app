@@ -2,10 +2,57 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>My First Web Page</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>GUESS_</title>
     </head>
     <body>
-        <h1>Welcome to my first web page!</h1>
-        <p>This is a paragraph of text.</p>
+        <header>
+            <!-- burger bttn -->
+            <button id="burger-button">
+                <div></div>
+                <div></div>
+                <div></div>
+            </button>
+
+            <h1 id="main-title">GUESS_</h1>
+            <nav id="burger-menu" class="hidden">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <!-- burger menu -->
+            <div id="score">
+                <span>score: 0</span>
+            </div>
+            <div id="game">
+                <h4 id="hints-title">hints</h4>
+                <div id="hints-board">
+                    <span>orange</span>
+                    <span>orange</span>
+                    <span>orange</span>
+                    <span>orange</span>
+                    <span>orange</span>
+                    <span>orange</span>
+                    <span>orange</span>
+                    <span>orange</span>
+                    <span>orange</span>
+                </div>
+                <form action="">
+                    <div id="input-field">
+                        <label for="guess">Guess</label>
+                        <input type="text" id="guess" placeholder="_" />
+                    </div>
+                    <button>VALIDER</button>
+                </form>
+            </div>
+        </main>
+        <script src="script.js"></script>
     </body>
 </html>
