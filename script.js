@@ -24,22 +24,17 @@ document.addEventListener("DOMContentLoaded", function () {
         .getElementById("guess-button")
         .addEventListener("click", checkGuess);
 
-    //:event listener when mobile phone keyboard is opened
     document.getElementById("guess").addEventListener("focus", function () {
-        setTimeout(function () {
-            window.scrollTo(0, 0);
-            if (window.innerHeight < window.screen.height) {
-                console.log("keyboard opened");
-                document.getElementById("hints-title").style.display = "none";
-                const body = document.getElementsByTagName("body")[0];
-                body.style.height = window.innerHeight + "px";
-            } else {
-                console.log("keyboard closed");
-                document.getElementById("hints-title").style.display = "block";
-                const body = document.getElementsByTagName("body")[0];
-                body.style.height = "100%";
-            }
-        }, 100);
+        console.log("keyboard opened");
+        document.getElementById("hints-title").style.display = "none";
+        const body = document.getElementsByTagName("body")[0];
+        body.style.height = window.innerHeight + "px";
+    });
+
+    document.getElementById("guess").addEventListener("blur", function () {
+        document.getElementById("hints-title").style.display = "block";
+        const body = document.getElementsByTagName("body")[0];
+        body.style.height = "100vh";
     });
 
     // :event listener on input:focus hide hints-title et reduce body height
