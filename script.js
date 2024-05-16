@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //:event listener when mobile phone keyboard is opened
     document.getElementById("guess").addEventListener("focus", function () {
-        this.setTimeout(() => {
+        setTimeout(function () {
             window.scrollTo(0, 0);
             if (window.innerHeight < window.screen.height) {
                 console.log("keyboard opened");
