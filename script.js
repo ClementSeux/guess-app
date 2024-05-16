@@ -24,19 +24,32 @@ document.addEventListener("DOMContentLoaded", function () {
         .getElementById("guess-button")
         .addEventListener("click", checkGuess);
 
-    // :event listener on input:focus hide hints-title et reduce body height
-    document.getElementById("guess").addEventListener("focus", function () {
-        document.getElementById("hints-title").style.display = "none";
-        const body = document.getElementsByTagName("body")[0];
-        body.style.height = `${window.innerHeight}px`;
+    //:event listener when mobile phone keyboard is opened
+    window.addEventListener("resize", function () {
+        if (window.innerHeight < window.screen.height) {
+            document.getElementById("hints-title").style.display = "none";
+            const body = document.getElementsByTagName("body")[0];
+            body.style.height = `${window.innerHeight}px`;
+        } else {
+            document.getElementById("hints-title").style.display = "block";
+            const body = document.getElementsByTagName("body")[0];
+            body.style.height = "100vh";
+        }
     });
 
-    // :event listener on input:blur show hints-title et reset body height
-    document.getElementById("guess").addEventListener("blur", function () {
-        document.getElementById("hints-title").style.display = "block";
-        const body = document.getElementsByTagName("body")[0];
-        body.style.height = "100vh";
-    });
+    // // :event listener on input:focus hide hints-title et reduce body height
+    // document.getElementById("guess").addEventListener("focus", function () {
+    //     document.getElementById("hints-title").style.display = "none";
+    //     const body = document.getElementsByTagName("body")[0];
+    //     body.style.height = `${window.innerHeight}px`;
+    // });
+
+    // // :event listener on input:blur show hints-title et reset body height
+    // document.getElementById("guess").addEventListener("blur", function () {
+    //     document.getElementById("hints-title").style.display = "block";
+    //     const body = document.getElementsByTagName("body")[0];
+    //     body.style.height = "100vh";
+    // });
 
     const words = [
         "apple",
