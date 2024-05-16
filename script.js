@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "zebra",
     ];
     const word = words[Math.floor(Math.random() * words.length)];
+    console.log(word);
     document.getElementById("answer").innerHTML = word.replace(/./g, "_ ");
 
     function addHintToBoard(hint, similarity) {
@@ -128,6 +129,10 @@ document.addEventListener("DOMContentLoaded", function () {
             hints.appendChild(span);
         }
     }
+    function revealAnswer() {
+        document.getElementById("answer").innerHTML = word;
+        document.getElementById("answer-banner").classList.add("reveal");
+    }
 
     async function getSimilarity(guess) {
         const url =
@@ -166,8 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("guess").value = "";
         document.getElementById("input-display").innerHTML = "_";
         if (guess === word) {
-            document.getElementById("answer").innerHTML = word;
-            document.getElementById("answer").style.color = "rgb(130 130 255)";
+            revealAnswer();
         } else {
             document.getElementById("score-value").innerHTML =
                 parseInt(document.getElementById("score-value").innerHTML) - 10;
