@@ -118,6 +118,21 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    &.reveal {
+        height: 70px;
+        color: var(--secondaryColor);
+        width: 100%;
+        text-align: center;
+        /* animated gradient purple to orange */
+        background: linear-gradient(
+            90deg,
+            var(--primaryColor),
+            var(--accentColor)
+        );
+        background-size: 200% 200%;
+        animation: gradient 1.5s linear infinite;
+        animation-direction: alternate;
+    }
 }
 
 #burger-menu {
@@ -266,18 +281,6 @@ form {
             }
         }
     }
-}
-
-.reveal {
-    height: 60px;
-    color: var(--secondaryColor);
-    width: 100%;
-    text-align: center;
-    /* animated gradient purple to orange */
-    background: linear-gradient(90deg, var(--primaryColor), var(--accentColor));
-    background-size: 200% 200%;
-    animation: gradient 1.5s linear infinite;
-    animation-direction: alternate;
 }
 
 @keyframes gradient {
