@@ -42,19 +42,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 500);
     });
 
-    // // :event listener on input:focus hide hints-title et reduce body height
-    // document.getElementById("guess").addEventListener("focus", function () {
-    //     document.getElementById("hints-title").style.display = "none";
-    //     const body = document.getElementsByTagName("body")[0];
-    //     body.style.height = `${window.innerHeight}px`;
-    // });
+    // :event listener on input:focus hide hints-title et reduce body height
+    document.getElementById("guess").addEventListener("focus", function () {
+        // prevent default scroll
+        window.scrollTo(0, 0);
+    });
 
-    // // :event listener on input:blur show hints-title et reset body height
-    // document.getElementById("guess").addEventListener("blur", function () {
-    //     document.getElementById("hints-title").style.display = "block";
-    //     const body = document.getElementsByTagName("body")[0];
-    //     body.style.height = "100vh";
-    // });
+    // :event listener on input:blur show hints-title et reset body height
+    document.getElementById("guess").addEventListener("blur", function () {
+        document.getElementById("hints-title").style.display = "block";
+        const body = document.getElementsByTagName("body")[0];
+        body.style.height = "100vh";
+    });
 
     const words = [
         "apple",
