@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log("keyboard opened");
                 document.getElementById("hints-title").style.display = "none";
                 const body = document.getElementsByTagName("body")[0];
-                body.style.height = "100vh";
+                body.style.height = window.innerHeight + "px";
             } else {
                 console.log("keyboard closed");
                 document.getElementById("hints-title").style.display = "block";
