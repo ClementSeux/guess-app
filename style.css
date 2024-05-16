@@ -110,7 +110,7 @@ main {
 }
 
 #answer-banner {
-    height: 50px;
+    height: 30px;
     display: flex;
     padding: 0;
     margin: 20px 0 0 0;
@@ -269,6 +269,7 @@ form {
 }
 
 .reveal {
+    height: 60px;
     color: var(--secondaryColor);
     width: 100%;
     text-align: center;
@@ -283,10 +284,11 @@ form {
     0% {
         background-position: 0% 50%;
         font-size: 2em;
-
+        text-shadow: #66625d 6px 6px 2px;
     }
     100% {
         background-position: 100% 50%;
         font-size: 1.2em;
+        text-shadow: #66625d 3px 3px 0px;
     }
 }
