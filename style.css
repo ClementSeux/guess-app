@@ -139,7 +139,15 @@ main {
         color: var(--quaternaryColor);
     }
 
+    & form > input:focus {
+        & + #hints-title {
+            display: none !important;
+        }
+    }
+
     & #hints-board {
+        max-height: 300px;
+        overflow-y: scroll;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -214,6 +222,9 @@ form {
             outline: none;
             color: transparent;
             & + #input-display {
+                color: var(--primaryColor);
+            }
+            & + label {
                 color: var(--primaryColor);
             }
         }

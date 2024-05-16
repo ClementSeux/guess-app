@@ -12,6 +12,14 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("input-display").innerHTML = this.value + "_";
     });
 
+    // :event listener to prevent form submission on enter keypress
+    document
+        .getElementById("guess-form")
+        .addEventListener("submit", function (e) {
+            e.preventDefault();
+        });
+        
+
     // :event listener on #guess-button to call checkGuess function
     document
         .getElementById("guess-button")
@@ -51,11 +59,28 @@ document.addEventListener("DOMContentLoaded", function () {
     function addHintToBoard(hint, similarity) {
         const hints = document.getElementById("hints-board");
         const span = document.createElement("span");
-        span.innerHTML = hint + " " + similarity;
-        const green = Math.floor(255 * similarity);
-        const red = Math.floor(255 * (1 - similarity));
-        span.style.color = "rgb(" + red + "," + green + ",0)";
-        hints.appendChild(span);
+        span.innerHTML = hint;
+        const blue = Math.floor(255 * similarity);
+        const green = 130;
+        const red = green;
+        // const red = Math.floor(255 * (1 - similarity));
+        span.style.color = "rgb(" + red + "," + green + "," + blue + ")";
+        span.classList.add("similarity:" + similarity);
+        // add hint to board in order of similarity
+        let added = false;
+        for (let i = 0; i < hints.children.length; i++) {
+            if (
+                parseFloat(hints.children[i].classList[0].split(":")[1]) <
+                similarity
+            ) {
+                hints.insertBefore(span, hints.children[i]);
+                added = true;
+                break;
+            }
+        }
+        if (!added) {
+            hints.appendChild(span);
+        }
     }
 
     async function getSimilarity(guess) {
@@ -77,8 +102,11 @@ document.addEventListener("DOMContentLoaded", function () {
             const response = await fetch(url, options);
             const result = await response.text();
             console.log(result);
-            const similarity = JSON.parse(result).similarity * 10;
-            addHintToBoard(guess, similarity);
+            const similarity = JSON.parse(result).similarity;
+            const leanedSimilarity = (
+                similarity * 5 > 1 ? 0.9 : similarity * 5
+            ).toFixed(2);
+            addHintToBoard(guess, leanedSimilarity);
         } catch (error) {
             console.error(error);
         }
@@ -90,8 +118,10 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("input-display").innerHTML = "_";
         if (guess === word) {
             document.getElementById("answer").innerHTML = word;
-            document.getElementById("answer").style.color = "green";
+            document.getElementById("answer").style.color = "rgb(130 130 255)";
         } else {
+            document.getElementById("score-value").innerHTML =
+                parseInt(document.getElementById("score-value").innerHTML) - 10;
             await getSimilarity(guess);
         }
     }
