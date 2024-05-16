@@ -130,6 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
     function revealAnswer() {
+        window.scrollTo(0, 0);
         document.getElementById("answer").innerHTML = word;
         document.getElementById("answer-banner").classList.add("reveal");
     }
