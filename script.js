@@ -26,15 +26,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //:event listener when mobile phone keyboard is opened
     window.addEventListener("resize", function () {
-        if (window.innerHeight < window.screen.height) {
-            document.getElementById("hints-title").style.display = "none";
-            const body = document.getElementsByTagName("body")[0];
-            body.style.height = `${window.innerHeight}px`;
-        } else {
-            document.getElementById("hints-title").style.display = "block";
-            const body = document.getElementsByTagName("body")[0];
-            body.style.height = "100vh";
-        }
+        this.setTimeout(() => {
+            if (window.innerHeight < window.screen.height) {
+                console.log("keyboard opened");
+                document.getElementById("hints-title").style.display = "none";
+                const body = document.getElementsByTagName("body")[0];
+                body.style.height = `${window.innerHeight}px`;
+            } else {
+                console.log("keyboard closed");
+                document.getElementById("hints-title").style.display = "block";
+                const body = document.getElementsByTagName("body")[0];
+                body.style.height = "100vh";
+            }
+        }, 100);
     });
 
     // // :event listener on input:focus hide hints-title et reduce body height
@@ -95,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // add toltip show similarity
         span.addEventListener("mouseover", function () {
             const tooltip = document.createElement("span");
-            tooltip.innerHTML = toString(similarity * 100).slice(0, 4) + "%";
+            tooltip.innerHTML = (similarity * 100).toFixed(1) + "%";
             tooltip.style.position = "absolute";
             tooltip.style.backgroundColor = "rgba(0,0,0,0.5)";
             tooltip.style.color = "white";
