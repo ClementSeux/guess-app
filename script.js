@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .addEventListener("submit", function (e) {
             e.preventDefault();
         });
-        
 
     // :event listener on #guess-button to call checkGuess function
     document
@@ -66,6 +65,22 @@ document.addEventListener("DOMContentLoaded", function () {
         // const red = Math.floor(255 * (1 - similarity));
         span.style.color = "rgb(" + red + "," + green + "," + blue + ")";
         span.classList.add("similarity:" + similarity);
+        // add toltip show similarity
+        span.addEventListener("mouseover", function () {
+            const tooltip = document.createElement("span");
+            tooltip.innerHTML = similarity * 100 + "%";
+            tooltip.style.position = "absolute";
+            tooltip.style.backgroundColor = "rgba(0,0,0,0.5)";
+            tooltip.style.color = "white";
+            tooltip.style.padding = "5px";
+            tooltip.style.borderRadius = "5px";
+            tooltip.style.zIndex = "1";
+            this.appendChild(tooltip);
+        });
+        span.addEventListener("mouseout", function () {
+            this.removeChild(this.children[0]);
+        });
+
         // add hint to board in order of similarity
         let added = false;
         for (let i = 0; i < hints.children.length; i++) {
