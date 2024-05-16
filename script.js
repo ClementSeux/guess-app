@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .addEventListener("click", checkGuess);
 
     //:event listener when mobile phone keyboard is opened
-    window.addEventListener("resize", function () {
+    document.getElementById("guess").addEventListener("focus", function () {
         this.setTimeout(() => {
             window.scrollTo(0, 0);
             if (window.innerHeight < window.screen.height) {
