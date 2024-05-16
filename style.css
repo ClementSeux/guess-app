@@ -1,6 +1,6 @@
 :root {
     --primaryColor: #5b42f5;
-    --primaryColor: #6ff5c8;
+    --primaryColor: #f56ff5;
     --secondaryColor: #f9fcf9;
     --tertiaryColor: #f5f5f5;
     --quaternaryColor: #929292;
@@ -9,6 +9,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Ropa+Sans:ital@0;1&display=swap");
 
 body {
+    position: fixed;
     height: 100vh;
     display: flex;
     flex-direction: column;
