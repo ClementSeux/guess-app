@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //:event listener when mobile phone keyboard is opened
     window.addEventListener("resize", function () {
         this.setTimeout(() => {
+            window.scrollTo(0, 0);
             if (window.innerHeight < window.screen.height) {
                 console.log("keyboard opened");
                 document.getElementById("hints-title").style.display = "none";
@@ -38,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const body = document.getElementsByTagName("body")[0];
                 body.style.height = "100vh";
             }
-        }, 100);
+        }, 500);
     });
 
     // // :event listener on input:focus hide hints-title et reduce body height
