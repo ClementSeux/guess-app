@@ -31,13 +31,20 @@ document.addEventListener("DOMContentLoaded", function () {
             if (window.innerHeight < window.screen.height) {
                 console.log("keyboard opened");
                 document.getElementById("hints-title").style.display = "none";
+                // move the form right under #answer
+                const form = document.getElementById("guess-form");
+                const answer = document.getElementById("answer");
+                const answerRect = answer.getBoundingClientRect();
+                form.style.top = answerRect.bottom + "px";
                 const body = document.getElementsByTagName("body")[0];
-                body.style.height = `${window.innerHeight}px`;
+                body.style.height = "auto";
             } else {
                 console.log("keyboard closed");
                 document.getElementById("hints-title").style.display = "block";
                 const body = document.getElementsByTagName("body")[0];
                 body.style.height = "100vh";
+                const form = document.getElementById("guess-form");
+                form.style.top = undefined;
             }
         }, 500);
     });
@@ -159,7 +166,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     async function checkGuess() {
-        const guess = document.getElementById("guess").value;
+        const guess = document
+            .getElementById("guess")
+            .value.toLowerCase()
+            .trim();
         document.getElementById("guess").value = "";
         document.getElementById("input-display").innerHTML = "_";
         if (guess === word) {
