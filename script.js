@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // add toltip show similarity
         span.addEventListener("mouseover", function () {
             const tooltip = document.createElement("span");
-            tooltip.innerHTML = similarity * 100 + "%";
+            tooltip.innerHTML = toString(similarity * 100).slice(0, 4) + "%";
             tooltip.style.position = "absolute";
             tooltip.style.backgroundColor = "rgba(0,0,0,0.5)";
             tooltip.style.color = "white";
