@@ -31,22 +31,15 @@ document.addEventListener("DOMContentLoaded", function () {
             if (window.innerHeight < window.screen.height) {
                 console.log("keyboard opened");
                 document.getElementById("hints-title").style.display = "none";
-                // move the form right under #answer
-                const form = document.getElementById("guess-form");
-                const answer = document.getElementById("answer");
-                const answerRect = answer.getBoundingClientRect();
-                form.style.top = answerRect.bottom + "px";
                 const body = document.getElementsByTagName("body")[0];
-                body.style.height = "auto";
+                body.style.height = "100vh";
             } else {
                 console.log("keyboard closed");
                 document.getElementById("hints-title").style.display = "block";
                 const body = document.getElementsByTagName("body")[0];
-                body.style.height = "100vh";
-                const form = document.getElementById("guess-form");
-                form.style.top = undefined;
+                body.style.height = "100%";
             }
-        }, 500);
+        }, 100);
     });
 
     // :event listener on input:focus hide hints-title et reduce body height
